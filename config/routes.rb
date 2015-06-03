@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :proceedings
 
-  get "/proceedings/dashboard" => "proceedings#dashboard"
+  get "/proceedings/dashboard"
 
   root "proceedings#dashboard"
 

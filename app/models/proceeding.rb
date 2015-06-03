@@ -12,4 +12,19 @@ class Proceeding < ActiveRecord::Base
     end
     return total
   end
+
+  def self.num_proceedings
+    self.count
+  end
+
+  def self.spent
+    total = 0
+    self.all.each do |p|
+      if p.action == "Withdrawal" && (Time.now - p.created_at < 31535000)
+        total += p.amount
+      end
+    end
+    return total.to_f
+  end
+
 end
