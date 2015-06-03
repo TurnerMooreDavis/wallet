@@ -7,6 +7,9 @@ class ProceedingsController < ApplicationController
     @spent_last_month = Proceeding.spent(1)
     @proceedings_this_month = Proceeding.num_proceedings(0)
     @proceedings_last_month = Proceeding.num_proceedings(1)
+    @biggest_withdrawal_this_month = Proceeding.biggest_withdrawal(0)
+    @biggest_withdrawal = Proceeding.biggest_withdrawal("all")
+
   end
   # GET /proceedings
   # GET /proceedings.json

@@ -19,7 +19,7 @@ class Proceeding < ActiveRecord::Base
     else
       total = 0
       self.all.each do |p|
-        if (Time.now.month-offset == p.created_at.month)
+        if (Time.now.month-offset == p.updated_at.month)
           total += 1
         end
       end
@@ -27,10 +27,23 @@ class Proceeding < ActiveRecord::Base
     end
   end
 
+  def self.biggest_withdrawal(offset)
+    greatest = 0
+    self.all.each do |p|
+      if p.amount > greatest && p.action == "Withdrawal" && offset == "all"
+        greatest = p.amount
+      elsif p.amount > greatest && p.action == "Withdrawal" && (Time.now.month-offset == p.updated_at.month)
+        greatest = p.amount
+      end
+    end
+    return greatest.to_f
+  end
+
+
   def self.spent(offset)
     total = 0
     self.all.each do |p|
-      if p.action == "Withdrawal" && (Time.now.month-offset == p.created_at.month)
+      if p.action == "Withdrawal" && (Time.now.month-offset == p.updated_at.month)
         total += p.amount
       end
     end
