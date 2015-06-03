@@ -13,18 +13,29 @@ class Proceeding < ActiveRecord::Base
     return total
   end
 
-  def self.num_proceedings
-    self.count
+  def self.num_proceedings(offset)
+    if offset == "all"
+      return self.count
+    else
+      total = 0
+      self.all.each do |p|
+        if (Time.now.month-offset == p.created_at.month)
+          total += 1
+        end
+      end
+      return total
+    end
   end
 
-  def self.spent
+  def self.spent(offset)
     total = 0
     self.all.each do |p|
-      if p.action == "Withdrawal" && (Time.now - p.created_at < 31535000)
+      if p.action == "Withdrawal" && (Time.now.month-offset == p.created_at.month)
         total += p.amount
       end
     end
     return total.to_f
   end
+
 
 end

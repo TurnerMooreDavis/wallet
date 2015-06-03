@@ -2,8 +2,11 @@ class ProceedingsController < ApplicationController
   before_action :set_proceeding, only: [:show, :edit, :update, :destroy]
   def dashboard
     @total = Proceeding.total
-    @number_of_proceedings = Proceeding.num_proceedings
-    @spent = Proceeding.spent
+    @number_of_proceedings = Proceeding.num_proceedings("all")
+    @spent_this_month = Proceeding.spent(0)
+    @spent_last_month = Proceeding.spent(1)
+    @proceedings_this_month = Proceeding.num_proceedings(0)
+    @proceedings_last_month = Proceeding.num_proceedings(1)
   end
   # GET /proceedings
   # GET /proceedings.json
