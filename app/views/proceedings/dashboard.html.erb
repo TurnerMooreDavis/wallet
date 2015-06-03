@@ -1,19 +1,29 @@
+<head>
+<style>
+#footer {
+  position:absolute;
+  bottom: 10px;
+  }
+</style>
+</head>
+<div>
+  <h3>Total:</h3><%=@total %>
+  <h3>Number of Proceedings:</h3><%=@number_of_proceedings %>
+  <h3>Total Spent This Month:</h3><%=@spent_this_month %>
+  <h3>Total Spent Last Month:</h3><%=@spent_last_month %>
+  <h3>Number of Proceedings This Month:</h3><%=@proceedings_this_month %>
+  <h3>Number of Proceedings Last Month:</h3><%=@proceedings_last_month %>
+  <h3>Largest Withdrawal this Month:</h3><%=@biggest_withdrawal_this_month  %>
+  <h3>Largest Withdrawal:</h3><%=@biggest_withdrawal  %>
+  <h3>Greatest Source of Misery:</h3><%=@moneysuck  %>
+</div>
 
-<h1>Total:</h1><%=@total %>
-<h1>Number of Proceedings:</h1><%=@number_of_proceedings %>
-<h1>Total Spent This Month:</h1><%=@spent_this_month %>
-<h1>Total Spent Last Month:</h1><%=@spent_last_month %>
-<h1>Number of Proceedings This Month:</h1><%=@proceedings_this_month %>
-<h1>Number of Proceedings Last Month:</h1><%=@proceedings_last_month %>
-<h1>Biggest Withdrawal this Month:</h1><%=@biggest_withdrawal_this_month  %>
-<h1>Biggest Withdrawal:</h1><%=@biggest_withdrawal  %>
 
 
 
 
 
-
-<footer>
-<%=link_to "Proceedings", proceedings_path %>
-<%=link_to "New Proceeding", new_proceeding_path %>
-</footer>
+<div id="footer">
+  <%=link_to "Proceedings", proceedings_path %>
+  <%=link_to "New Proceeding", new_proceeding_path %>
+</div id="footer">

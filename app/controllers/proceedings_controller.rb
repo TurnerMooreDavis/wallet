@@ -9,6 +9,7 @@ class ProceedingsController < ApplicationController
     @proceedings_last_month = Proceeding.num_proceedings(1)
     @biggest_withdrawal_this_month = Proceeding.biggest_withdrawal(0)
     @biggest_withdrawal = Proceeding.biggest_withdrawal("all")
+    @moneysuck = Proceeding.largest_moneysuck
 
   end
   # GET /proceedings

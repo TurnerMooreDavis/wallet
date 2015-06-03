@@ -1,4 +1,6 @@
+require "set"
 class Proceeding < ActiveRecord::Base
+
   def self.total
     total = 0
     self.all.each do |p|
@@ -48,6 +50,20 @@ class Proceeding < ActiveRecord::Base
       end
     end
     return total.to_f
+  end
+
+  def self.largest_moneysuck
+    names_and_amounts = {}
+    self.all.each do |p|
+      if names_and_amounts.has_key?(p.name.upcase) && p.action == "Withdrawal"
+        amount = (names_and_amounts.fetch("#{p.name.upcase}") + p.amount)
+        names_and_amounts.store(p.name.upcase, amount.to_f)
+      elsif p.action == "Withdrawal"
+        names_and_amounts.store(p.name.upcase, p.amount.to_f)
+      end
+    end
+    result=names_and_amounts.max_by{|n| n[1]}
+    return result[0]
   end
 
 
