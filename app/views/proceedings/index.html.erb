@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Proceedings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Action</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @proceedings.each do |proceeding| %>
+      <tr>
+        <td><%= proceeding.name %></td>
+        <td><%= proceeding.amount %></td>
+        <td><%= proceeding.action %></td>
+        <td><%= link_to 'Show', proceeding %></td>
+        <td><%= link_to 'Edit', edit_proceeding_path(proceeding) %></td>
+        <td><%= link_to 'Destroy', proceeding, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Proceeding', new_proceeding_path %>

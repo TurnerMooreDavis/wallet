@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @proceeding.name %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @proceeding.amount %>
+</p>
+
+<p>
+  <strong>Action:</strong>
+  <%= @proceeding.action %>
+</p>
+
+<%= link_to 'Edit', edit_proceeding_path(@proceeding) %> |
+<%= link_to 'Back', proceedings_path %>
